@@ -5,7 +5,7 @@ exports.run = (client, message, args) => {
   console.log(`[Lala LOGS CMD] Usaram o comando "dbl" - Nome: ${message.author.username} (${message.author.id}) Server: ${message.guild.name} (${message.guild.id}`)
   let botID = args[0] || "484544053481046036";
   
-  const dbl = new DBL('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQzNDEyMTUxMTUzNjY4OTE1MiIsImJvdCI6dHJ1ZSwiaWF0IjoxNTM2MTAxNzYwfQ.R_XWxnbODylL0DfizD88GaQXFF_aPjnlrt8YUB7oAqs', client);
+  const dbl = new DBL('process.env.BOT_DBL', client);
   
   dbl.getBot(botID).then(bot => {
     console.log(bot)
