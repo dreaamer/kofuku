@@ -4,6 +4,7 @@ const { prefixo, dono, token } = require('./config.json')
 const config = require('./config.json')
 const database = require("./db.js");
 const lala = new Discord.Client();
+const token = process.env.BOT_TOKEN
 
 lala.login(token)
 
