@@ -1,5 +1,5 @@
 const cleverbot = require("cleverbot.io"),
-      cbot = new cleverbot("process.env.CLEVER_1", "process.env.CLEVER_2");
+      cbot = new cleverbot(process.env.CLEVER_1, process.env.CLEVER_2);
 
 exports.run = (bot, message, args, Discord, disEmbed) => {
   let msg = args.join(" ");
