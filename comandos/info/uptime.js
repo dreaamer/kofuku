@@ -17,4 +17,5 @@ exports.run = (client, message, args) => {
       return time;
 
       message.channel.send(`<:gloock:488829272664965130> - ${os.processUptime().toString().toHHMMSS()}`)
+  }
   };
