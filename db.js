@@ -3,10 +3,10 @@ var esquema = mongoose.Schema;
 const options = {
   useNewUrlParser: true,
   }
-mongoose.connect("mongodb://kofuku:71716263a@ds249311.mlab.com:49311/blue", options
+mongoose.connect("process.env_BOT_DB", options
 , (err) => {
-    if (err) return console.log("[Lala ERROR] Não foi possivel conectar ao banco de dados.");
-    console.log("[Lala] Conectado com sucesso ao banco de dados")
+    if (err) return console.log("[Kofuku ERROR] Não foi possivel conectar ao banco de dados.");
+    console.log("[Kofuku] Conectado com sucesso ao banco de dados")
 })
 
 var Usuários = new esquema({
