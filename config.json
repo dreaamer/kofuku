@@ -1,5 +1,4 @@
 {
 	"prefixo" : "kf.",
 	"dono" : "321076625502371852",
-	"token" : process.env.BOT_TOKEN
 }
