@@ -1,10 +1,9 @@
 const Discord = require('discord.js')
 var os  = require('os-utils');
-const { prefixo, dono } = require('./config.json')
+const { prefixo, dono, token } = require('./config.json')
 const config = require('./config.json')
 const database = require("./db.js");
 const lala = new Discord.Client();
-const token = process.env.BOT_TOKEN
 
 lala.login(token)
 
@@ -31,21 +30,6 @@ lala.on("message", message => {
     if(message.channel.type == "dm") return;
     if(!message.content.startsWith(config.prefixo)) return;
 
-    database.Usuários.findOne({
-        "_id": usuario.id
-    }, function (erro, documento) {
-
-        if(documento) {
-
-            if(documento.ban) {
-                var desenvolvedores = ["321076625502371852"]
-                if(!desenvolvedores.includes(message.author.id)) {
-                message.reply(resposta).then((value) => {
-                    setTimeout(() => {
-                        value.delete();
-                    }, 4000);
-                });
-            } else {
 
                 let command = message.content.split(" ")[0];
                 command = command.slice(config.prefixo.length);
@@ -56,40 +40,11 @@ lala.on("message", message => {
                     let commandFile = require(`./comandos/music/${command}.js`);
                     commandFile.run(lala, message, args);
                 } catch(err) {
-                    console.error("[Lala ERROR] " + err);
+                    console.error(`[${lala.user.username} ERROR] ` + err);
                 }
-            }
-            } else {
-
-                let command = message.content.split(" ")[0];
-                command = command.slice(config.prefixo.length);
-
-                let args = message.content.split(" ").slice(1);
-
-                try {
-                    let commandFile = require(`./comandos/music/${command}.js`);
-                    commandFile.run(lala, message, args);
-                } catch(err) {
-                    console.error("[Lala ERROR] " + err);
-                }
-
-            }
-
-        } else {
-            var pessoa = new database.Usuários({
-                _id: usuario.id,
-                xp: 0,
-                level: 0,
-                coins: 0,
-                rep: 0,
             })
 
-            pessoa.save()
-        }
 
-    })
-
-});
 
 lala.on("message", message => {
 
@@ -99,21 +54,7 @@ lala.on("message", message => {
     if(message.channel.type == "dm") return;
     if(!message.content.startsWith(config.prefixo)) return;
 
-    database.Usuários.findOne({
-        "_id": usuario.id
-    }, function (erro, documento) {
 
-        if(documento) {
-
-            if(documento.ban) {
-                var desenvolvedores = ["321076625502371852"]
-                if(!desenvolvedores.includes(message.author.id)) {
-                message.reply(resposta).then((value) => {
-                    setTimeout(() => {
-                        value.delete();
-                    }, 4000);
-                });
-            } else {
 
                 let command = message.content.split(" ")[0];
                 command = command.slice(config.prefixo.length);
@@ -124,40 +65,12 @@ lala.on("message", message => {
                     let commandFile = require(`./comandos/image/${command}.js`);
                     commandFile.run(lala, message, args);
                 } catch(err) {
-                    console.error("[Lala ERROR] " + err);
+                    console.error(`[${lala.user.username} ERROR] ` + err);
                 }
-            }
-            } else {
-
-                let command = message.content.split(" ")[0];
-                command = command.slice(config.prefixo.length);
-
-                let args = message.content.split(" ").slice(1);
-
-                try {
-                    let commandFile = require(`./comandos/image/${command}.js`);
-                    commandFile.run(lala, message, args);
-                } catch(err) {
-                    console.error("[Lala ERROR] " + err);
-                }
-
-            }
-
-        } else {
-            var pessoa = new database.Usuários({
-                _id: usuario.id,
-                xp: 0,
-                level: 0,
-                coins: 0,
-                rep: 0,
             })
 
-            pessoa.save()
-        }
 
-    })
 
-});
 
 lala.on("message", message => {
 
@@ -167,21 +80,6 @@ lala.on("message", message => {
     if(message.channel.type == "dm") return;
     if(!message.content.startsWith(config.prefixo)) return;
 
-    database.Usuários.findOne({
-        "_id": usuario.id
-    }, function (erro, documento) {
-
-        if(documento) {
-
-            if(documento.ban) {
-                var desenvolvedores = ["321076625502371852"]
-                if(!desenvolvedores.includes(message.author.id)) {
-                message.reply(resposta).then((value) => {
-                    setTimeout(() => {
-                        value.delete();
-                    }, 4000);
-                });
-            } else {
 
                 let command = message.content.split(" ")[0];
                 command = command.slice(config.prefixo.length);
@@ -192,40 +90,12 @@ lala.on("message", message => {
                     let commandFile = require(`./comandos/fun/${command}.js`);
                     commandFile.run(lala, message, args);
                 } catch(err) {
-                    console.error("[Lala ERROR] " + err);
+                    console.error(`[${lala.user.username} ERROR] ` + err);
                 }
-            }
-            } else {
-
-                let command = message.content.split(" ")[0];
-                command = command.slice(config.prefixo.length);
-
-                let args = message.content.split(" ").slice(1);
-
-                try {
-                    let commandFile = require(`./comandos/fun/${command}.js`);
-                    commandFile.run(lala, message, args);
-                } catch(err) {
-                    console.error("[Lala ERROR] " + err);
-                }
-
-            }
-
-        } else {
-            var pessoa = new database.Usuários({
-                _id: usuario.id,
-                xp: 0,
-                level: 0,
-                coins: 0,
-                rep: 0,
             })
 
-            pessoa.save()
-        }
 
-    })
 
-});
 
 lala.on("message", message => {
 
@@ -235,21 +105,7 @@ lala.on("message", message => {
     if(message.channel.type == "dm") return;
     if(!message.content.startsWith(config.prefixo)) return;
 
-    database.Usuários.findOne({
-        "_id": usuario.id
-    }, function (erro, documento) {
 
-        if(documento) {
-
-            if(documento.ban) {
-                var desenvolvedores = ["321076625502371852"]
-                if(!desenvolvedores.includes(message.author.id)) {
-                message.reply(resposta).then((value) => {
-                    setTimeout(() => {
-                        value.delete();
-                    }, 4000);
-                });
-            } else {
 
                 let command = message.content.split(" ")[0];
                 command = command.slice(config.prefixo.length);
@@ -260,40 +116,10 @@ lala.on("message", message => {
                     let commandFile = require(`./comandos/games/${command}.js`);
                     commandFile.run(lala, message, args);
                 } catch(err) {
-                    console.error("[Lala ERROR] " + err);
+                    console.error(`[${lala.user.username} ERROR] ` + err);
                 }
-            }
-            } else {
-
-                let command = message.content.split(" ")[0];
-                command = command.slice(config.prefixo.length);
-
-                let args = message.content.split(" ").slice(1);
-
-                try {
-                    let commandFile = require(`./comandos/games/${command}.js`);
-                    commandFile.run(lala, message, args);
-                } catch(err) {
-                    console.error("[Lala ERROR] " + err);
-                }
-
-            }
-
-        } else {
-            var pessoa = new database.Usuários({
-                _id: usuario.id,
-                xp: 0,
-                level: 0,
-                coins: 0,
-                rep: 0,
             })
 
-            pessoa.save()
-        }
-
-    })
-
-});
 
 lala.on("message", message => {
 
@@ -303,21 +129,8 @@ lala.on("message", message => {
     if(message.channel.type == "dm") return;
     if(!message.content.startsWith(config.prefixo)) return;
 
-    database.Usuários.findOne({
-        "_id": usuario.id
-    }, function (erro, documento) {
 
-        if(documento) {
-
-            if(documento.ban) {
-                var desenvolvedores = ["321076625502371852"]
-                if(!desenvolvedores.includes(message.author.id)) {
-                message.reply(resposta).then((value) => {
-                    setTimeout(() => {
-                        value.delete();
-                    }, 4000);
-                });
-            } else {
+            
 
                 let command = message.content.split(" ")[0];
                 command = command.slice(config.prefixo.length);
@@ -328,50 +141,22 @@ lala.on("message", message => {
                     let commandFile = require(`./comandos/info/${command}.js`);
                     commandFile.run(lala, message, args);
                 } catch(err) {
-                    console.error("[Lala ERROR] " + err);
+                    console.error(`[${lala.user.username} ERROR] ` + err);
                 }
-            }
-            } else {
-
-                let command = message.content.split(" ")[0];
-                command = command.slice(config.prefixo.length);
-
-                let args = message.content.split(" ").slice(1);
-
-                try {
-                    let commandFile = require(`./comandos/info/${command}.js`);
-                    commandFile.run(lala, message, args);
-                } catch(err) {
-                    console.error("[Lala ERROR] " + err);
-                }
-
-            }
-
-        } else {
-            var pessoa = new database.Usuários({
-                _id: usuario.id,
-                xp: 0,
-                level: 0,
-                coins: 0,
-                rep: 0,
             })
 
-            pessoa.save()
-        }
+            
 
-    })
 
-});
-
-var xpCol = new Set()
-let xpRDM = Math.round(Math.random() * 35)
-let coinsRDM = Math.round(Math.random() * 45)
+var xpC = new Set()
+let xp = Math.round(Math.random() * 35)
+let coins = Math.round(Math.random() * 45)
 
 
 lala.on("message", message => {
     if(message.author.bot) return;
     if(message.channel.type == "dm") return
-                if(xpCol.has(message.author.id)) return;
+                if(xpC.has(message.author.id)) return;
                 database.Usuários.findOne({
                     "_id": message.author.id
                 }, function (erro, documento) {
@@ -379,8 +164,8 @@ lala.on("message", message => {
                         if(documento.ban) {} else {
                             var unbug = 370 * documento.level + 1
                             if(documento.xp > unbug) {
-                                documento.xp += xpRDM
-                                documento.coins += coinsRDM
+                                documento.xp += xp
+                                documento.coins += coins
                                 documento.level += 1
                                 let up = new Discord.RichEmbed()
                                 .setDescription(`<:tadaa:488472682870997003> - Congratulations **${message.author}**, you went up to level **${documento.level}**!`)
@@ -390,17 +175,17 @@ lala.on("message", message => {
                             
                                 documento.xp = 0
                                 documento.save()
-                                xpCol.add(message.author.id)
+                                xpC.add(message.author.id)
                                 setTimeout(function () {
-                                    xpCol.delete(message.author.id)
+                                    xpC.delete(message.author.id)
                                 }, 30 * 1000)
                             } else {
-                                documento.xp += xpRDM
-                                documento.coins += coinsRDM
+                                documento.xp += xp
+                                documento.coins += coins
                                 documento.save()
-                                xpCol.add(message.author.id)
+                                xpC.add(message.author.id)
                                 setTimeout(function () {
-                                    xpCol.delete(message.author.id)
+                                    xpC.delete(message.author.id)
                                 }, 30 * 1000)
                             }
                         }
@@ -430,7 +215,7 @@ async function getEval(message, args) {
         if(evaled === null) evaled = 'null';
         if(evaled === undefined) evaled = 'undefined';
 
-        var msg12 = `${evaled}`
+        var msg = `${evaled}`
 
                                 message.channel.send({
             "embed": {
