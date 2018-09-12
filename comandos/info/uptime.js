@@ -16,6 +16,6 @@ exports.run = (client, message, args) => {
           days > 1 ? time = days+" days " : time = time
       return time;
   }
-      message.channel.send(`<:gloock:488829272664965130> - ${os.processUptime().toString().toHHMMSS()}`)
+      message.channel.send(`<:gloock:488829272664965130> - ${os.processUptime().toString().toHHMMSS()}.`)
   
   };
