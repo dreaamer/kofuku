@@ -30,7 +30,7 @@ exports.run = (client, message, args) => {
     if (bot.longdesc.length < 1024) {
       dblEmbed.addField('<:dc:487077010384879617> Full Description', bot.longdesc);
     } else if(bot.longdesc.length >= 1024) {
-      dblEmbed.addField('<:dc:487077010384879617> Full Description', 'Full description too long, please go to the page by clicking the link provided at the top of this embed.');
+      dblEmbed.addField('<:dc:487077010384879617> Full Description', 'Full description too long, please go to the page by clicking the link provided at the top of this embed!');
     }
     
     message.channel.send(dblEmbed)
