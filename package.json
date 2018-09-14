@@ -46,6 +46,7 @@
     "os-utils": "0.0.14",
     "ping": "^0.2.2",
     "python": "0.0.4",
+    "random-puppy": "^1.1.0",
     "rebuild": "^0.1.2",
     "relevant-urban": "^2.0.0",
     "request": "^2.88.0",
