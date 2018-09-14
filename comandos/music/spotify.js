@@ -1,6 +1,9 @@
 const Discord = require('discord.js');
-
+const cooldown = new Set()
 exports.run = (client, message, args) => {
+            if (cooldown.has(message.author.id)) {
+    message.channel.send('<:gloock:488829272664965130> - Wait **30** seconds to use this command again.')
+  } else {
   console.log(`[Lala LOGS CMD] Usaram o comando "spotify" - Nome: ${message.author.username} (${message.author.id}) Server: ${message.guild.name} (${message.guild.id}`)
   let user = message.mentions.users.first() || message.author; 
   if (user.presence.game !== null && user.presence.game.type === 2 && user.presence.game.name === 'Spotify') {
@@ -26,3 +29,9 @@ exports.run = (client, message, args) => {
     message.channel.send('<:error:485264317734846464> - The user is not listening to **Spotify!**');
   }
 }
+
+        cooldown.add(message.author.id)
+    setTimeout(() => {
+      cooldown.delete(message.author.id)
+    }, 30000)
+  }
