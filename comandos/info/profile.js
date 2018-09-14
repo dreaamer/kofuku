@@ -1,6 +1,10 @@
 var database = require("../../db.js")
+const cooldown = new Set()
 
 exports.run = (client, message, args) => {
+        if (cooldown.has(message.author.id)) {
+    message.channel.send('<:gloock:488829272664965130> - Wait **30** seconds to use this command again.')
+  } else {
 console.log(`[Lala LOGS CMD] Usaram o comando "profile" - Nome: ${message.author.username} (${message.author.id}) Server: ${message.guild.name} (${message.guild.id}`)
   let user = message.mentions.users.first();
 
@@ -12,7 +16,7 @@ console.log(`[Lala LOGS CMD] Usaram o comando "profile" - Nome: ${message.author
 
   if (documento) {
 
-    var unbug = 350 * documento.level + 1
+    var exp = 350 * documento.level + 1
 
     message.channel.send({
         "embed": {
@@ -32,7 +36,7 @@ console.log(`[Lala LOGS CMD] Usaram o comando "profile" - Nome: ${message.author
             },
             {
               "name": "XP",
-              "value": `${documento.xp}/${unbug}`,
+              "value": `${documento.xp}/${exp}`,
               "inline": true
             },
             {
@@ -126,3 +130,9 @@ console.log(`[Lala LOGS CMD] Usaram o comando "profile" - Nome: ${message.author
   })
   }
 }
+
+    cooldown.add(message.author.id)
+    setTimeout(() => {
+      cooldown.delete(message.author.id)
+    }, 30000)
+  }
