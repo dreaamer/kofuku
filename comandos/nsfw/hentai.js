@@ -5,7 +5,7 @@ const snekfetch = require('snekfetch')
 exports.run = (client, msg) => {
   if (!msg.channel.nsfw) return msg.channel.send('<:error:485264317734846464> - You can only use this command on some **adult content channel**')
   snekfetch.get(`https://discordbots.org/bot/${client.user.id}/vote`)
-  .set('Authorization', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI2NDgxMTYxMzcwODc0Njc1MiIsImJvdCI6dHJ1ZSwiaWF0IjoxNDgzMDk5MjAwfQ.8tpNASxdSsfkVF7YparhyV1Ouy5ORQ3AM2jitd_Y-PI")
+  .set('Authorization', process.env.BOT_DBL)
   .end((err, res) => {
     if (err) {
       msg.channel.send('<:error:485264317734846464> - An error occurred while attempting to execute this command')
