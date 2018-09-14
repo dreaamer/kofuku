@@ -47,6 +47,29 @@ lala.on("message", message => {
             })
 
 
+lala.on("message", message => {
+
+    let usuario = message.mentions.users.first() ? message.mentions.users.first() : message.author
+
+    if(usuario.bot) return;
+    if(message.channel.type == "dm") return;
+    if(!message.content.startsWith(config.prefixo)) return;
+
+
+                let command = message.content.split(" ")[0];
+                command = command.slice(config.prefixo.length);
+
+                let args = message.content.split(" ").slice(1);
+
+                try {
+                    let commandFile = require(`./comandos/nsfw/${command}.js`);
+                    commandFile.run(lala, message, args);
+                } catch(err) {
+                    console.error(`[${lala.user.username} ERROR] ` + err);
+                }
+            })
+
+
 
 lala.on("message", message => {
 
