@@ -1,8 +1,12 @@
 const os = require('os-utils');
 const fs = require('fs')
 const config = require('../../config.json')
+const cooldown = new Set()
 
 exports.run = (client, message, args, guild) => {
+        if (cooldown.has(message.author.id)) {
+    message.channel.send('<:gloock:488829272664965130> - Wait **30** seconds to use this command again.')
+  } else {
 
     var dreamer = client.guilds.get("321077526568894465").members.get("321076625502371852").user.tag
 
@@ -57,7 +61,7 @@ exports.run = (client, message, args, guild) => {
             },
             {
               "name": "<:latency:484919068395307009> Latency",
-              "value": `${client.ping}ms`,
+              "value": `${Math.floor(client.ping)}ms`,
               "inline": true
             
                         },
@@ -88,5 +92,12 @@ exports.run = (client, message, args, guild) => {
       });
 
 }
+
+    cooldown.add(message.author.id)
+    setTimeout(() => {
+      cooldown.delete(message.author.id)
+    }, 30000)
+  }
+
 
 
