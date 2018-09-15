@@ -1,19 +1,11 @@
+
 const randomPuppy = require('random-puppy')
 const snekfetch = require('snekfetch')
 
 
 exports.run = (client, msg) => {
+	console.log(`[Lala LOGS CMD] Usaram o comando "hentai" - Nome: ${msg.author.username} (${msg.author.id}) Server: ${msg.guild.name} (${msg.guild.id}`)
   if (!msg.channel.nsfw) return msg.channel.send('<:error:485264317734846464> - You can only use this command on some **adult content channel**')
-  snekfetch.get(`https://discordbots.org/bot/${client.user.id}/vote`)
-  .set('Authorization', process.env.BOT_DBL)
-  .end((err, res) => {
-    if (err) {
-      msg.channel.send('<:error:485264317734846464> - An error occurred while attempting to execute this command')
-      console.log(`${err}`)
-    }
-    var check = res.body.includes(msg.author.id.toString())
-    if (msg.author.id === "321076625502371852") check = 1
-    if (check === 1) {
       randomPuppy('hentai').then(url => {
         msg.channel.send({
           embed: {
@@ -28,27 +20,11 @@ exports.run = (client, msg) => {
             timestamp: new Date(),
             footer: {
               icon_url: client.user.avatarURL,
-              text: `${msg.author.username}#${msg.author.discriminator}`
+              text: `${client.user.username}`
             }
           }
         })
       })
-    } else {
-      msg.channel.send({
-        embed: {
-          title: 'Vote for Kofuku to use this command.',
-          url: 'https://discordbots.org/bot/484544053481046036/vote',
-          description: `Command available only to those who voted for the bot.`,
-          color: 0xf6546a,
- 
-          timestamp: new Date(),
-          footer: {
-            icon_url: client.user.avatarURL,
-            text: `${msg.author.username}#${msg.author.discriminator}`
-          }
-        }
-      })
-    }
-  })
-}
+  }
+
 
