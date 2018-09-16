@@ -3,12 +3,12 @@ var database = require("../../db.js")
 exports.run = (client, message, args) => {
 
 
-    let razaou = args.slice(0).join(' ');
+    let r = args.slice(0).join(' ');
     let razaod = args.slice(1).join(' ');
 
-    var desenvolvedores = ["321076625502371852"]
+    var dev = ["321076625502371852"]
 
-    if (!desenvolvedores.includes(message.author.id) & !message.member.hasPermission(["MANAGE_GUILD"]))
+    if (!dev.includes(message.author.id) & !message.member.hasPermission(["MANAGE_GUILD"]))
     return message.channel.send("<:correct:485264744685764611> - You are not allowed to configure the bot");
 
     database.Guilds.findOne({
@@ -17,7 +17,7 @@ exports.run = (client, message, args) => {
 
         if (documento) {
 
-            if (!razaou.length < 1) {
+            if (!r.length < 1) {
 
                 if (message.content.startsWith("kf.config level")) {
                     if(documento.leveis){
