@@ -204,6 +204,11 @@ let coins = Math.round(Math.random() * 45)
 lala.on("message", message => {
     if(message.author.bot) return;
     if(message.channel.type == "dm") return
+    database.Guilds.findOne({
+        "_id": message.guild.id
+    }, function (serverro, servidorto) {
+        if(servidorto) {
+            if(servidorto.leveis) {
                 if(xpC.has(message.author.id)) return;
                 database.Usuários.findOne({
                     "_id": message.author.id
