@@ -66,7 +66,7 @@ exports.run = (client, message, args) => {
               "inline": true
             },
             {
-              "name": "Money",
+              "name": "Coins",
               "value": `${documento.coins}`.replace('true', 'Online').replace('false', 'Offline'),
               "inline": true
             }
