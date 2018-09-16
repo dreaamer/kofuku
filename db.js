@@ -32,6 +32,23 @@ var Usuários = new esquema({
     },
 })
 
+var Guild = new esquema({
+    _id: {
+        type: String
+    },
+    leveis: {
+        type: Boolean,
+        default: true
+    },
+    coins: {
+        type: Boolean,
+        default: true
+    },
+
+})
+
 
 var Usuários = mongoose.model("Usuários", Usuários);
+var Guilds = mongoose.model("Guilds", Guild);
+exports.Guilds = Guilds
 exports.Usuários = Usuários
