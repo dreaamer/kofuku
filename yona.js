@@ -246,10 +246,20 @@ lala.on("message", message => {
                 		rep: 0,
                         })
 
-                        pessoa.save()
+                         pessoa.save()
                     }
-                })
+                });
+            } else {}
+        } else {
+            var servidor = new database.Guilds({
+                _id: message.guild.id,
+                leveis: true,
+                coins: true,
             })
+            servidor.save()
+        }
+    });
+});
 
 
 async function getEval(message, args) {
