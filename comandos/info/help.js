@@ -2,6 +2,10 @@ var fs = require('fs');
 
 exports.run = (client, message, args) => {
 
+fs.readdir('./comandos/admin', (err, files) => {
+  const admin = [];
+  files.forEach(file => admin.push('kf.' + file.replace('.js', '')));
+
 fs.readdir('./comandos/fun', (err, files) => {
   const FUN = [];
   files.forEach(file => FUN.push('kf.' + file.replace('.js', '')));
@@ -30,7 +34,16 @@ fs.readdir('./comandos/nsfw', (err, files) => {
   const nsfw = [];
   files.forEach(file => nsfw.push('kf.' + file.replace('.js', '')));
 
+fs.readdir('./comandos/util', (err, files) => {
+  const util = [];
+  files.forEach(file => util.push('kf.' + file.replace('.js', '')));
 
+
+let adminc = fs.readdirSync('./comandos/admin');
+let aquantity = adminc.length;
+
+let utilc = fs.readdirSync('./comandos/util');
+let uquantity = utilc.length;
 
 let fun = fs.readdirSync('./comandos/fun');
 let funquantity = fun.length;
@@ -63,6 +76,14 @@ let nquantity = nsfwc.length;
               "text": message.author.username
           },
           "fields": [{
+              "name": `<:owner:486723105214169120> Admin commands [${aquantity}]`,
+              "value": '``' + admin.join(', ') + '``'
+            },
+            {
+              "name": `<:cmd:486724644364222474> Util commands [${uquantity}]`,
+              "value": '``' + util.join(', ') + '``'
+            },
+            {
               "name": `<:tadaa:488472682870997003> Fun commands [${funquantity}]`,
               "value": '``' + FUN.join(', ') + '``'
             },
@@ -85,6 +106,8 @@ let nquantity = nsfwc.length;
             {
               "name": `<:nochildren:490244199224967184> Nsfw commands [${nquantity}]`,
               "value": '``' + nsfw.join(', ') + '``'
+
+
               
           }]
       }
