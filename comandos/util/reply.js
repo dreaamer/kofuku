@@ -1,4 +1,10 @@
-exports.run = (bot, msg) => {
+const cooldown = new Set()
+
+exports.run = (bot, msg, args) => {
+
+      if (cooldown.has(message.author.id)) {
+    message.channel.send('<:gloock:488829272664965130> - Wait **5** seconds to use this command again.')
+  } else {
 var quote = msg.content.split(" ").slice(1).join(" ");
 msg.delete();
 if (quote.length < 1) {
@@ -22,3 +28,9 @@ msg.channel.fetchMessages({
 });
 
 };
+    
+        cooldown.add(message.author.id)
+    setTimeout(() => {
+      cooldown.delete(message.author.id)
+    }, 5000)
+  }
