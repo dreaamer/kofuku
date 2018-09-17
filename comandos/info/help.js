@@ -1,6 +1,12 @@
 var fs = require('fs');
 
+const cooldown = new Set()
+
 exports.run = (client, message, args) => {
+
+      if (cooldown.has(message.author.id)) {
+    message.channel.send('<:gloock:488829272664965130> - Wait **5** seconds to use this command again.')
+  } else {
 
 fs.readdir('./comandos/admin', (err, files) => {
   const admin = [];
@@ -121,4 +127,8 @@ let nquantity = nsfwc.length;
 })
 })
 }
-
+    cooldown.add(message.author.id)
+    setTimeout(() => {
+      cooldown.delete(message.author.id)
+    }, 5000)
+  }
