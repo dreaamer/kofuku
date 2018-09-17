@@ -5,7 +5,7 @@ const cooldown = new Set()
 
 exports.run = (client, msg) => {
 
-      if (cooldown.has(message.author.id)) {
+      if (cooldown.has(msg.author.id)) {
     msg.channel.send('<:gloock:488829272664965130> - Wait **5** seconds to use this command again.')
   } else {
 	console.log(`[Lala LOGS CMD] Usaram o comando "hentai" - Nome: ${msg.author.username} (${msg.author.id}) Server: ${msg.guild.name} (${msg.guild.id}`)
@@ -31,9 +31,9 @@ exports.run = (client, msg) => {
       })
   }
 
-    cooldown.add(message.author.id)
+    cooldown.add(msg.author.id)
     setTimeout(() => {
-      cooldown.delete(message.author.id)
+      cooldown.delete(msg.author.id)
     }, 5000)
   }
 
