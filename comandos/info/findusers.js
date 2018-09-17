@@ -1,7 +1,7 @@
 const cooldown = new Set()
 module.exports.run = async (bot, message, args) => {
       if (cooldown.has(message.author.id)) {
-    message.channel.send('<:gloock:488829272664965130> - Wait **30** seconds to use this command again.')
+    message.channel.send('<:gloock:488829272664965130> - Wait **5** seconds to use this command again.')
   } else {
   let users = bot.users;
 
@@ -23,5 +23,5 @@ module.exports.run = async (bot, message, args) => {
     cooldown.add(message.author.id)
     setTimeout(() => {
       cooldown.delete(message.author.id)
-    }, 30000)
+    }, 5000)
   }
