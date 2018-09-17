@@ -1,4 +1,10 @@
+const cooldown = new Set()
+
 exports.run = (client, message, args) => {
+
+      if (cooldown.has(message.author.id)) {
+    message.channel.send('<:gloock:488829272664965130> - Wait **5** seconds to use this command again.')
+  } else {
   console.log(`[Lala LOGS CMD] Usaram o comando "avatar" - Nome: ${message.author.username} (${message.author.id}) Server: ${message.guild.name} (${message.guild.id}`)
 
     let user = message.mentions.users.first();
@@ -79,3 +85,9 @@ exports.run = (client, message, args) => {
     }
 
 }
+  
+    cooldown.add(message.author.id)
+    setTimeout(() => {
+      cooldown.delete(message.author.id)
+    }, 5000)
+  }
