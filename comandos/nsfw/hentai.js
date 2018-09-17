@@ -6,7 +6,7 @@ const cooldown = new Set()
 exports.run = (client, msg) => {
 
       if (cooldown.has(message.author.id)) {
-    message.channel.send('<:gloock:488829272664965130> - Wait **5** seconds to use this command again.')
+    msg.channel.send('<:gloock:488829272664965130> - Wait **5** seconds to use this command again.')
   } else {
 	console.log(`[Lala LOGS CMD] Usaram o comando "hentai" - Nome: ${msg.author.username} (${msg.author.id}) Server: ${msg.guild.name} (${msg.guild.id}`)
   if (!msg.channel.nsfw) return msg.channel.send('<:error:485264317734846464> - You can only use this command on some **adult content channel**')
