@@ -3,7 +3,7 @@ const cooldown = new Set()
 module.exports.run = async (bot, message, args) => {
 
 	  if (cooldown.has(message.author.id)) {
-    message.channel.send('<:gloock:488829272664965130> - Wait **30** seconds to use this command again.')
+    message.channel.send('<:gloock:488829272664965130> - Wait **5** seconds to use this command again.')
   } else {
 console.log(`[Lala LOGS CMD] Usaram o comando "vaporwave" - Nome: ${message.author.username} (${message.author.id}) Server: ${message.guild.name} (${message.guild.id}`)
 
@@ -24,10 +24,8 @@ message.channel.send(msgstringVapor.toFullWidth());
     cooldown.add(message.author.id)
     setTimeout(() => {
       cooldown.delete(message.author.id)
-    }, 30000)
+    }, 5000)
   }
 
 
-module.exports.help = {
-    name: "vaporwave"
-}
+
