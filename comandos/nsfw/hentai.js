@@ -3,7 +3,7 @@ const randomPuppy = require('random-puppy')
 const snekfetch = require('snekfetch')
 const cooldown = new Set()
 
-exports.run = (client, message, args) => {
+exports.run = (client, msg) => {
 
       if (cooldown.has(message.author.id)) {
     message.channel.send('<:gloock:488829272664965130> - Wait **5** seconds to use this command again.')
